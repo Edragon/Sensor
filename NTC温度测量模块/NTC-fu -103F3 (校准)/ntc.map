@@ -1,0 +1,689 @@
+
+Map of ..\ntc\ntc.sm8 from link file ..\ntc\ntc.lkf - Tue Dec 22 13:27:51 2015
+
+
+                               --------
+                               Segments
+                               --------
+
+start 00008080 end 00008084 length     4 segment .const
+start 00008087 end 00008c0c length  2949 segment .text
+start 00004000 end 00004000 length     0 segment .eeprom
+start 00000000 end 00000000 length     0 segment .bsct
+start 00000000 end 0000000a length    10 segment .ubsct
+start 0000000a end 0000000a length     0 segment .bit
+start 0000000a end 0000000a length     0 segment .share
+start 00000100 end 00000100 length     0 segment .data
+start 00000100 end 00000100 length     0 segment .bss
+start 00000000 end 000005cb length  1483 segment .info.
+start 00000000 end 00005d58 length 23896 segment .debug
+start 00008000 end 00008080 length   128 segment .const
+start 00008084 end 00008087 length     3 segment .init
+
+
+                               -------
+                               Modules
+                               -------
+
+C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8:
+start 00008087 end 000080d2 length    75 section .text
+start 00000100 end 00000100 length     0 section .bss
+start 00000000 end 00000000 length     0 section .ubsct
+start 00000000 end 0000002f length    47 section .info.
+
+..\ntc\stm8s_adc1.o:
+start 000080d2 end 00008505 length  1075 section .text
+start 00000000 end 000015f1 length  5617 section .debug
+start 0000002f end 000000a2 length   115 section .info.
+
+..\ntc\stm8s_clk.o:
+start ******** end ******** length     0 section .text *** removed ***
+start 000015f1 end 00002c60 length  5743 section .debug
+start 000000a2 end 00000114 length   114 section .info.
+start ******** end ******** length     0 section .const *** removed ***
+
+..\ntc\stm8s_gpio.o:
+start 00008505 end 000085b7 length   178 section .text
+start 00002c60 end 0000366a length  2570 section .debug
+start 00000114 end 00000187 length   115 section .info.
+
+..\ntc\main.o:
+start 000085b7 end 00008a19 length  1122 section .text
+start ******** end ******** length     0 section .bsct *** removed ***
+start 0000366a end 000055b3 length  8009 section .debug
+start 00000187 end 000001f4 length   109 section .info.
+start 00008080 end 00008084 length     4 section .const
+
+..\ntc\stm8s_it.o:
+start ******** end ******** length     0 section .text *** removed ***
+start 000055b3 end 00005bed length  1594 section .debug
+start 000001f4 end 00000265 length   113 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ctof.o:
+start 00008a19 end 00008a21 length     8 section .text
+start 00000265 end 00000293 length    46 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)fcmp.o:
+start 00008a21 end 00008a57 length    54 section .text
+start 00000293 end 000002c1 length    46 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)fmul.o:
+start 00008a57 end 00008b2c length   213 section .text
+start 000002c1 end 000002ef length    46 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ftol.o:
+start 00008b2c end 00008b8e length    98 section .text
+start 000002ef end 0000031d length    46 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)itof.o:
+start 00008b8e end 00008bbc length    46 section .text
+start 0000031d end 0000034b length    46 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lreg.o:
+start 00000000 end 00000004 length     4 section .ubsct
+start 0000034b end 00000379 length    46 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ltor.o:
+start 00008bbc end 00008bce length    18 section .text
+start 00000379 end 000003a7 length    46 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ludiv.o:
+start ******** end ******** length     0 section .text *** removed ***
+start 000003a7 end 000003d6 length    47 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ldiv.o:
+start ******** end ******** length     0 section .text *** removed ***
+start 000003d6 end 00000404 length    46 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lgneg.o:
+start ******** end ******** length     0 section .text *** removed ***
+start 00000404 end 00000433 length    47 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lneg.o:
+start ******** end ******** length     0 section .text *** removed ***
+start 00000433 end 00000461 length    46 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)rtol.o:
+start 00008bce end 00008be0 length    18 section .text
+start 00000461 end 0000048f length    46 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)sdivx.o:
+start 00008be0 end 00008c0b length    43 section .text
+start 0000048f end 000004be length    47 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)xreg.o:
+start 00000004 end 00000007 length     3 section .ubsct
+start 000004be end 000004ec length    46 section .info.
+
+(C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)yreg.o:
+start 00000007 end 0000000a length     3 section .ubsct
+start 000004ec end 0000051a length    46 section .info.
+
+..\ntc\stm8_interrupt_vector.o:
+start 00008c0b end 00008c0c length     1 section .text
+start 00005bed end 00005d58 length   363 section .debug
+start 0000051a end 00000598 length   126 section .info.
+start 00008000 end 00008080 length   128 section .const
+
+
+                             -----------
+                             Stack usage
+                             -----------
+
+..\ntc\main.o:
+_ADC1_GetValue                   11   (4)
+_ADC1_GetValue_Average       >   17   (6)
+_Display_SingleNumber             7   (2)
+_Display_Temperature         >   20   (13)
+_MY_ADC1_Init                >   17   (2)
+_SEG_GPIO_Init               >    8   (2)
+_main                        >    8   (2)
+
+..\ntc\stm8_interrupt_vector.o:
+f_NonHandledInterrupt        >    5   (5)
+
+..\ntc\stm8s_adc1.o:
+_ADC1_AWDChannelConfig       >    4   (4)
+_ADC1_ClearFlag                   4   (4)
+_ADC1_ClearITPendingBit      >    5   (5)
+_ADC1_Cmd                         2   (2)
+_ADC1_ConversionConfig            5   (5)
+_ADC1_DataBufferCmd          >    2   (2)
+_ADC1_DeInit                      2   (2)
+_ADC1_ExternalTriggerConfig       4   (4)
+_ADC1_GetAWDChannelStatus    >    4   (4)
+_ADC1_GetBufferValue         >    8   (8)
+_ADC1_GetConversionValue          7   (7)
+_ADC1_GetFlagStatus               4   (4)
+_ADC1_GetITStatus            >    5   (5)
+_ADC1_ITConfig               >    5   (5)
+_ADC1_Init                       15   (10)
+_ADC1_PrescalerConfig             3   (3)
+_ADC1_ScanModeCmd            >    2   (2)
+_ADC1_SchmittTriggerConfig        4   (4)
+_ADC1_SetHighThreshold       >    4   (4)
+_ADC1_SetLowThreshold        >    2   (2)
+_ADC1_StartConversion             2   (2)
+
+..\ntc\stm8s_gpio.o:
+_GPIO_DeInit                 >    2   (2)
+_GPIO_ExternalPullUpConfig   >    6   (6)
+_GPIO_Init                        6   (6)
+_GPIO_ReadInputData          >    2   (2)
+_GPIO_ReadInputPin           >    5   (5)
+_GPIO_ReadOutputData         >    2   (2)
+_GPIO_Write                       5   (5)
+_GPIO_WriteHigh                   5   (5)
+_GPIO_WriteLow                    5   (5)
+_GPIO_WriteReverse           >    5   (5)
+
+Stack size: 25
+
+
+                              ---------
+                              Call tree
+                              ---------
+   1 > _ADC1_AWDChannelConfig: (4)
+
+   2 > _ADC1_ClearITPendingBit: (5)
+
+   3 > _ADC1_DataBufferCmd: (2)
+
+   4 > _ADC1_GetAWDChannelStatus: (4)
+
+   5 > _ADC1_GetBufferValue: (8)
+
+   6 > _ADC1_GetITStatus: (5)
+
+   7 > _ADC1_GetValue_Average: (6)
+   8      + _ADC1_GetValue: (4)
+   9      |    + _ADC1_ClearFlag: (4)
+  10      |    + _ADC1_GetConversionValue: (7)
+  11      |    + _ADC1_GetFlagStatus: (4)
+  12      |    + _ADC1_StartConversion: (2)
+          | 
+       
+  13 > _ADC1_ITConfig: (5)
+
+  14 > _ADC1_ScanModeCmd: (2)
+
+  15 > _ADC1_SetHighThreshold: (4)
+
+  16 > _ADC1_SetLowThreshold: (2)
+
+  17 > _Display_Temperature: (13)
+  18      + _Display_SingleNumber: (2)
+  19      |    + _GPIO_WriteHigh: (5)
+  20      |    + _GPIO_WriteLow: (5)
+          | 
+  21      + _GPIO_WriteHigh --> 19
+  22      + _GPIO_WriteLow --> 20
+       
+  23 > _GPIO_DeInit: (2)
+
+  24 > _GPIO_ExternalPullUpConfig: (6)
+
+  25 > _GPIO_ReadInputData: (2)
+
+  26 > _GPIO_ReadInputPin: (5)
+
+  27 > _GPIO_ReadOutputData: (2)
+
+  28 > _GPIO_WriteReverse: (5)
+
+  29 > _MY_ADC1_Init: (2)
+  30      + _ADC1_Cmd: (2)
+  31      + _ADC1_DeInit: (2)
+  32      + _ADC1_Init: (10)
+  33      |    + _ADC1_ConversionConfig: (5)
+  34      |    + _ADC1_ExternalTriggerConfig: (4)
+  35      |    + _ADC1_PrescalerConfig: (3)
+  36      |    + _ADC1_SchmittTriggerConfig: (4)
+          | 
+  37      + _GPIO_Init: (6)
+       
+  38 > _SEG_GPIO_Init: (2)
+  39      + _GPIO_Init --> 37
+       
+  40 > __stext: (0)
+
+  41 > _main: (2)
+  42      + _GPIO_Init --> 37
+  43      + _GPIO_Write: (5)
+       
+  44 > f_NonHandledInterrupt: (5)
+
+  45   _ADC1_ClearFlag --> 9
+
+  46   _ADC1_Cmd --> 30
+
+  47   _ADC1_ConversionConfig --> 33
+
+  48   _ADC1_DeInit --> 31
+
+  49   _ADC1_ExternalTriggerConfig --> 34
+
+  50   _ADC1_GetConversionValue --> 10
+
+  51   _ADC1_GetFlagStatus --> 11
+
+  52   _ADC1_GetValue --> 8
+
+  53   _ADC1_Init --> 32
+
+  54   _ADC1_PrescalerConfig --> 35
+
+  55   _ADC1_SchmittTriggerConfig --> 36
+
+  56   _ADC1_StartConversion --> 12
+
+  57   _Display_SingleNumber --> 18
+
+  58   _GPIO_Init --> 37
+
+  59   _GPIO_Write --> 43
+
+  60   _GPIO_WriteHigh --> 19
+
+  61   _GPIO_WriteLow --> 20
+
+
+
+                               -------
+                               Symbols
+                               -------
+
+_ADC1_AWDChannelConfig              000082a7   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_ClearFlag                     0000840a   defined in ..\ntc\stm8s_adc1.o section .text
+                                               used in ..\ntc\main.o
+_ADC1_ClearITPendingBit             000084b3   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_Cmd                           0000812b   defined in ..\ntc\stm8s_adc1.o section .text
+                                               used in ..\ntc\main.o
+_ADC1_ConversionConfig              0000820f   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_DataBufferCmd                 00008147   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_DeInit                        000080d2   defined in ..\ntc\stm8s_adc1.o section .text
+                                               used in ..\ntc\main.o
+_ADC1_ExternalTriggerConfig         0000823d   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_GetAWDChannelStatus           00008380   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_GetBufferValue                00008327   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_GetConversionValue            00008263   defined in ..\ntc\stm8s_adc1.o section .text
+                                               used in ..\ntc\main.o
+_ADC1_GetFlagStatus                 000083b0   defined in ..\ntc\stm8s_adc1.o section .text
+                                               used in ..\ntc\main.o
+_ADC1_GetITStatus                   00008465   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_GetValue                      000085f7   defined in ..\ntc\main.o section .text
+_ADC1_GetValue_Average              00008612   defined in ..\ntc\main.o section .text
+_ADC1_ITConfig                      00008155   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_Init                          00008103   defined in ..\ntc\stm8s_adc1.o section .text
+                                               used in ..\ntc\main.o
+_ADC1_PrescalerConfig               0000816e   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_ScanModeCmd                   00008139   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_SchmittTriggerConfig          00008181   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_SetHighThreshold              0000830e   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_SetLowThreshold               0000831c   defined in ..\ntc\stm8s_adc1.o section .text
+_ADC1_StartConversion               0000825e   defined in ..\ntc\stm8s_adc1.o section .text
+                                               used in ..\ntc\main.o
+_ADC_AWCR                           0000540e   defined in ..\ntc\main.o
+_ADC_AWCRH                          0000540e   defined in ..\ntc\main.o
+_ADC_AWCRL                          0000540f   defined in ..\ntc\main.o
+_ADC_AWSR                           0000540c   defined in ..\ntc\main.o
+_ADC_AWSRH                          0000540c   defined in ..\ntc\main.o
+_ADC_AWSRL                          0000540d   defined in ..\ntc\main.o
+_ADC_CR1                            00005401   defined in ..\ntc\main.o
+_ADC_CR2                            00005402   defined in ..\ntc\main.o
+_ADC_CR3                            00005403   defined in ..\ntc\main.o
+_ADC_CSR                            00005400   defined in ..\ntc\main.o
+_ADC_DB0R                           000053e0   defined in ..\ntc\main.o
+_ADC_DB0RH                          000053e0   defined in ..\ntc\main.o
+_ADC_DB0RL                          000053e1   defined in ..\ntc\main.o
+_ADC_DB1R                           000053e2   defined in ..\ntc\main.o
+_ADC_DB1RH                          000053e2   defined in ..\ntc\main.o
+_ADC_DB1RL                          000053e3   defined in ..\ntc\main.o
+_ADC_DB2R                           000053e4   defined in ..\ntc\main.o
+_ADC_DB2RH                          000053e4   defined in ..\ntc\main.o
+_ADC_DB2RL                          000053e5   defined in ..\ntc\main.o
+_ADC_DB3R                           000053e6   defined in ..\ntc\main.o
+_ADC_DB3RH                          000053e6   defined in ..\ntc\main.o
+_ADC_DB3RL                          000053e7   defined in ..\ntc\main.o
+_ADC_DB4R                           000053e8   defined in ..\ntc\main.o
+_ADC_DB4RH                          000053e8   defined in ..\ntc\main.o
+_ADC_DB4RL                          000053e9   defined in ..\ntc\main.o
+_ADC_DB5R                           000053ea   defined in ..\ntc\main.o
+_ADC_DB5RH                          000053ea   defined in ..\ntc\main.o
+_ADC_DB5RL                          000053eb   defined in ..\ntc\main.o
+_ADC_DB6R                           000053ec   defined in ..\ntc\main.o
+_ADC_DB6RH                          000053ec   defined in ..\ntc\main.o
+_ADC_DB6RL                          000053ed   defined in ..\ntc\main.o
+_ADC_DB7R                           000053ee   defined in ..\ntc\main.o
+_ADC_DB7RH                          000053ee   defined in ..\ntc\main.o
+_ADC_DB7RL                          000053ef   defined in ..\ntc\main.o
+_ADC_DB8R                           000053f0   defined in ..\ntc\main.o
+_ADC_DB8RH                          000053f0   defined in ..\ntc\main.o
+_ADC_DB8RL                          000053f1   defined in ..\ntc\main.o
+_ADC_DB9R                           000053f2   defined in ..\ntc\main.o
+_ADC_DB9RH                          000053f2   defined in ..\ntc\main.o
+_ADC_DB9RL                          000053f3   defined in ..\ntc\main.o
+_ADC_DR                             00005404   defined in ..\ntc\main.o
+_ADC_DRH                            00005404   defined in ..\ntc\main.o
+_ADC_DRL                            00005405   defined in ..\ntc\main.o
+_ADC_HTR                            00005408   defined in ..\ntc\main.o
+_ADC_HTRH                           00005408   defined in ..\ntc\main.o
+_ADC_HTRL                           00005409   defined in ..\ntc\main.o
+_ADC_LTR                            0000540a   defined in ..\ntc\main.o
+_ADC_LTRH                           0000540a   defined in ..\ntc\main.o
+_ADC_LTRL                           0000540b   defined in ..\ntc\main.o
+_ADC_TDR                            00005406   defined in ..\ntc\main.o
+_ADC_TDRH                           00005406   defined in ..\ntc\main.o
+_ADC_TDRL                           00005407   defined in ..\ntc\main.o
+_AWU_APR                            000050f1   defined in ..\ntc\main.o
+_AWU_CSR                            000050f0   defined in ..\ntc\main.o
+_AWU_TBR                            000050f2   defined in ..\ntc\main.o
+_BEEP_CSR                           000050f3   defined in ..\ntc\main.o
+_CFG_GCR                            00007f60   defined in ..\ntc\main.o
+_CLKPrescTable                      ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_AdjustHSICalibrationValue      ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_CANCCR                         000050cb   defined in ..\ntc\main.o
+_CLK_CCOCmd                         ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_CCOConfig                      ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_CCOR                           000050c9   defined in ..\ntc\main.o
+_CLK_CKDIVR                         000050c6   defined in ..\ntc\main.o
+_CLK_CMSR                           000050c3   defined in ..\ntc\main.o
+_CLK_CSSR                           000050c8   defined in ..\ntc\main.o
+_CLK_ClearITPendingBit              ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_ClockSecuritySystemEnable      ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_ClockSwitchCmd                 ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_ClockSwitchConfig              ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_DeInit                         ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_ECKR                           000050c1   defined in ..\ntc\main.o
+_CLK_FastHaltWakeUpCmd              ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_GetClockFreq                   ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_GetFlagStatus                  ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_GetITStatus                    ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_GetSYSCLKSource                ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_HSECmd                         ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_HSICmd                         ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_HSIPrescalerConfig             ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_HSITRIMR                       000050cc   defined in ..\ntc\main.o
+_CLK_ICKR                           000050c0   defined in ..\ntc\main.o
+_CLK_ITConfig                       ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_LSICmd                         ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_PCKENR1                        000050c7   defined in ..\ntc\main.o
+_CLK_PCKENR2                        000050ca   defined in ..\ntc\main.o
+_CLK_PeripheralClockConfig          ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_SWCR                           000050c5   defined in ..\ntc\main.o
+_CLK_SWIMCCR                        000050cd   defined in ..\ntc\main.o
+_CLK_SWIMConfig                     ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_SWR                            000050c4   defined in ..\ntc\main.o
+_CLK_SYSCLKConfig                   ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_SYSCLKEmergencyClear           ********   *** removed from ..\ntc\stm8s_clk.o ***
+_CLK_SlowActiveHaltWakeUpCmd        ********   *** removed from ..\ntc\stm8s_clk.o ***
+_Display_SingleNumber               00008654   defined in ..\ntc\main.o section .text
+_Display_Temperature                00008927   defined in ..\ntc\main.o section .text
+_EXTI_CR1                           000050a0   defined in ..\ntc\main.o
+_EXTI_CR2                           000050a1   defined in ..\ntc\main.o
+_FLASH_CR1                          0000505a   defined in ..\ntc\main.o
+_FLASH_CR2                          0000505b   defined in ..\ntc\main.o
+_FLASH_DUKR                         00005064   defined in ..\ntc\main.o
+_FLASH_FPR                          0000505d   defined in ..\ntc\main.o
+_FLASH_IAPSR                        0000505f   defined in ..\ntc\main.o
+_FLASH_NCR2                         0000505c   defined in ..\ntc\main.o
+_FLASH_NFPR                         0000505e   defined in ..\ntc\main.o
+_FLASH_PUKR                         00005062   defined in ..\ntc\main.o
+_GPIO_DeInit                        00008505   defined in ..\ntc\stm8s_gpio.o section .text
+_GPIO_ExternalPullUpConfig          0000859f   defined in ..\ntc\stm8s_gpio.o section .text
+_GPIO_Init                          0000850d   defined in ..\ntc\stm8s_gpio.o section .text
+                                               used in ..\ntc\main.o
+_GPIO_ReadInputData                 00008595   defined in ..\ntc\stm8s_gpio.o section .text
+_GPIO_ReadInputPin                  00008598   defined in ..\ntc\stm8s_gpio.o section .text
+_GPIO_ReadOutputData                00008593   defined in ..\ntc\stm8s_gpio.o section .text
+_GPIO_Write                         00008575   defined in ..\ntc\stm8s_gpio.o section .text
+                                               used in ..\ntc\main.o
+_GPIO_WriteHigh                     0000857d   defined in ..\ntc\stm8s_gpio.o section .text
+                                               used in ..\ntc\main.o
+_GPIO_WriteLow                      00008584   defined in ..\ntc\stm8s_gpio.o section .text
+                                               used in ..\ntc\main.o
+_GPIO_WriteReverse                  0000858c   defined in ..\ntc\stm8s_gpio.o section .text
+_HSIDivFactor                       ********   *** removed from ..\ntc\stm8s_clk.o ***
+_I2C_CCRH                           0000521c   defined in ..\ntc\main.o
+_I2C_CCRL                           0000521b   defined in ..\ntc\main.o
+_I2C_CR1                            00005210   defined in ..\ntc\main.o
+_I2C_CR2                            00005211   defined in ..\ntc\main.o
+_I2C_DR                             00005216   defined in ..\ntc\main.o
+_I2C_FREQR                          00005212   defined in ..\ntc\main.o
+_I2C_ITR                            0000521a   defined in ..\ntc\main.o
+_I2C_OARH                           00005214   defined in ..\ntc\main.o
+_I2C_OARL                           00005213   defined in ..\ntc\main.o
+_I2C_PECR                           0000521e   defined in ..\ntc\main.o
+_I2C_SR1                            00005217   defined in ..\ntc\main.o
+_I2C_SR2                            00005218   defined in ..\ntc\main.o
+_I2C_SR3                            00005219   defined in ..\ntc\main.o
+_I2C_TRISER                         0000521d   defined in ..\ntc\main.o
+_ITC_SPR1                           00007f70   defined in ..\ntc\main.o
+_ITC_SPR2                           00007f71   defined in ..\ntc\main.o
+_ITC_SPR3                           00007f72   defined in ..\ntc\main.o
+_ITC_SPR4                           00007f73   defined in ..\ntc\main.o
+_ITC_SPR5                           00007f74   defined in ..\ntc\main.o
+_ITC_SPR6                           00007f75   defined in ..\ntc\main.o
+_ITC_SPR7                           00007f76   defined in ..\ntc\main.o
+_IWDG_KR                            000050e0   defined in ..\ntc\main.o
+_IWDG_PR                            000050e1   defined in ..\ntc\main.o
+_IWDG_RLR                           000050e2   defined in ..\ntc\main.o
+_MY_ADC1_Init                       000085cd   defined in ..\ntc\main.o section .text
+_PA_CR1                             00005003   defined in ..\ntc\main.o
+_PA_CR2                             00005004   defined in ..\ntc\main.o
+_PA_DDR                             00005002   defined in ..\ntc\main.o
+_PA_IDR                             00005001   defined in ..\ntc\main.o
+_PA_ODR                             00005000   defined in ..\ntc\main.o
+_PB_CR1                             00005008   defined in ..\ntc\main.o
+_PB_CR2                             00005009   defined in ..\ntc\main.o
+_PB_DDR                             00005007   defined in ..\ntc\main.o
+_PB_IDR                             00005006   defined in ..\ntc\main.o
+_PB_ODR                             00005005   defined in ..\ntc\main.o
+_PC_CR1                             0000500d   defined in ..\ntc\main.o
+_PC_CR2                             0000500e   defined in ..\ntc\main.o
+_PC_DDR                             0000500c   defined in ..\ntc\main.o
+_PC_IDR                             0000500b   defined in ..\ntc\main.o
+_PC_ODR                             0000500a   defined in ..\ntc\main.o
+_PD_CR1                             00005012   defined in ..\ntc\main.o
+_PD_CR2                             00005013   defined in ..\ntc\main.o
+_PD_DDR                             00005011   defined in ..\ntc\main.o
+_PD_IDR                             00005010   defined in ..\ntc\main.o
+_PD_ODR                             0000500f   defined in ..\ntc\main.o
+_PE_CR1                             00005017   defined in ..\ntc\main.o
+_PE_CR2                             00005018   defined in ..\ntc\main.o
+_PE_DDR                             00005016   defined in ..\ntc\main.o
+_PE_IDR                             00005015   defined in ..\ntc\main.o
+_PE_ODR                             00005014   defined in ..\ntc\main.o
+_PF_CR1                             0000501c   defined in ..\ntc\main.o
+_PF_CR2                             0000501d   defined in ..\ntc\main.o
+_PF_DDR                             0000501b   defined in ..\ntc\main.o
+_PF_IDR                             0000501a   defined in ..\ntc\main.o
+_PF_ODR                             00005019   defined in ..\ntc\main.o
+_RST_SR                             000050b3   defined in ..\ntc\main.o
+_Reference_Buf                      ********   *** removed from ..\ntc\main.o ***
+_SEG_GPIO_Init                      0000863d   defined in ..\ntc\main.o section .text
+_SPI_CR1                            00005200   defined in ..\ntc\main.o
+_SPI_CR2                            00005201   defined in ..\ntc\main.o
+_SPI_CRCPR                          00005205   defined in ..\ntc\main.o
+_SPI_DR                             00005204   defined in ..\ntc\main.o
+_SPI_ICR                            00005202   defined in ..\ntc\main.o
+_SPI_RXCRCR                         00005206   defined in ..\ntc\main.o
+_SPI_SR                             00005203   defined in ..\ntc\main.o
+_SPI_TXCRCR                         00005207   defined in ..\ntc\main.o
+_TIM1_ARR                           00005262   defined in ..\ntc\main.o
+_TIM1_ARRH                          00005262   defined in ..\ntc\main.o
+_TIM1_ARRL                          00005263   defined in ..\ntc\main.o
+_TIM1_BKR                           0000526d   defined in ..\ntc\main.o
+_TIM1_CCER1                         0000525c   defined in ..\ntc\main.o
+_TIM1_CCER2                         0000525d   defined in ..\ntc\main.o
+_TIM1_CCMR1                         00005258   defined in ..\ntc\main.o
+_TIM1_CCMR2                         00005259   defined in ..\ntc\main.o
+_TIM1_CCMR3                         0000525a   defined in ..\ntc\main.o
+_TIM1_CCMR4                         0000525b   defined in ..\ntc\main.o
+_TIM1_CCR1                          00005265   defined in ..\ntc\main.o
+_TIM1_CCR1H                         00005265   defined in ..\ntc\main.o
+_TIM1_CCR1L                         00005266   defined in ..\ntc\main.o
+_TIM1_CCR2                          00005267   defined in ..\ntc\main.o
+_TIM1_CCR2H                         00005267   defined in ..\ntc\main.o
+_TIM1_CCR2L                         00005268   defined in ..\ntc\main.o
+_TIM1_CCR3                          00005269   defined in ..\ntc\main.o
+_TIM1_CCR3H                         00005269   defined in ..\ntc\main.o
+_TIM1_CCR3L                         0000526a   defined in ..\ntc\main.o
+_TIM1_CCR4                          0000526b   defined in ..\ntc\main.o
+_TIM1_CCR4H                         0000526b   defined in ..\ntc\main.o
+_TIM1_CCR4L                         0000526c   defined in ..\ntc\main.o
+_TIM1_CNTR                          0000525e   defined in ..\ntc\main.o
+_TIM1_CNTRH                         0000525e   defined in ..\ntc\main.o
+_TIM1_CNTRL                         0000525f   defined in ..\ntc\main.o
+_TIM1_CR1                           00005250   defined in ..\ntc\main.o
+_TIM1_CR2                           00005251   defined in ..\ntc\main.o
+_TIM1_DTR                           0000526e   defined in ..\ntc\main.o
+_TIM1_EGR                           00005257   defined in ..\ntc\main.o
+_TIM1_ETR                           00005253   defined in ..\ntc\main.o
+_TIM1_IER                           00005254   defined in ..\ntc\main.o
+_TIM1_OISR                          0000526f   defined in ..\ntc\main.o
+_TIM1_PSCR                          00005260   defined in ..\ntc\main.o
+_TIM1_PSCRH                         00005260   defined in ..\ntc\main.o
+_TIM1_PSCRL                         00005261   defined in ..\ntc\main.o
+_TIM1_RCR                           00005264   defined in ..\ntc\main.o
+_TIM1_SMCR                          00005252   defined in ..\ntc\main.o
+_TIM1_SR1                           00005255   defined in ..\ntc\main.o
+_TIM1_SR2                           00005256   defined in ..\ntc\main.o
+_TIM5_ARR                           0000530f   defined in ..\ntc\main.o
+_TIM5_ARRH                          0000530f   defined in ..\ntc\main.o
+_TIM5_ARRL                          00005310   defined in ..\ntc\main.o
+_TIM5_CCER1                         0000530a   defined in ..\ntc\main.o
+_TIM5_CCER2                         0000530b   defined in ..\ntc\main.o
+_TIM5_CCMR1                         00005307   defined in ..\ntc\main.o
+_TIM5_CCMR2                         00005308   defined in ..\ntc\main.o
+_TIM5_CCMR3                         00005309   defined in ..\ntc\main.o
+_TIM5_CCR1                          00005311   defined in ..\ntc\main.o
+_TIM5_CCR1H                         00005311   defined in ..\ntc\main.o
+_TIM5_CCR1L                         00005312   defined in ..\ntc\main.o
+_TIM5_CCR2                          00005313   defined in ..\ntc\main.o
+_TIM5_CCR2H                         00005313   defined in ..\ntc\main.o
+_TIM5_CCR2L                         00005314   defined in ..\ntc\main.o
+_TIM5_CCR3                          00005315   defined in ..\ntc\main.o
+_TIM5_CCR3H                         00005315   defined in ..\ntc\main.o
+_TIM5_CCR3L                         00005316   defined in ..\ntc\main.o
+_TIM5_CNTR                          0000530c   defined in ..\ntc\main.o
+_TIM5_CNTRH                         0000530c   defined in ..\ntc\main.o
+_TIM5_CNTRL                         0000530d   defined in ..\ntc\main.o
+_TIM5_CR1                           00005300   defined in ..\ntc\main.o
+_TIM5_CR2                           00005301   defined in ..\ntc\main.o
+_TIM5_EGR                           00005306   defined in ..\ntc\main.o
+_TIM5_IER                           00005303   defined in ..\ntc\main.o
+_TIM5_PSCR                          0000530e   defined in ..\ntc\main.o
+_TIM5_SMCR                          00005302   defined in ..\ntc\main.o
+_TIM5_SR1                           00005304   defined in ..\ntc\main.o
+_TIM5_SR2                           00005305   defined in ..\ntc\main.o
+_TIM6_ARR                           00005348   defined in ..\ntc\main.o
+_TIM6_CNTR                          00005346   defined in ..\ntc\main.o
+_TIM6_CR1                           00005340   defined in ..\ntc\main.o
+_TIM6_CR2                           00005341   defined in ..\ntc\main.o
+_TIM6_EGR                           00005345   defined in ..\ntc\main.o
+_TIM6_IER                           00005343   defined in ..\ntc\main.o
+_TIM6_PSCR                          00005347   defined in ..\ntc\main.o
+_TIM6_SMCR                          00005342   defined in ..\ntc\main.o
+_TIM6_SR                            00005344   defined in ..\ntc\main.o
+_UART1_BRR1                         00005232   defined in ..\ntc\main.o
+_UART1_BRR2                         00005233   defined in ..\ntc\main.o
+_UART1_CR1                          00005234   defined in ..\ntc\main.o
+_UART1_CR2                          00005235   defined in ..\ntc\main.o
+_UART1_CR3                          00005236   defined in ..\ntc\main.o
+_UART1_CR4                          00005237   defined in ..\ntc\main.o
+_UART1_CR5                          00005238   defined in ..\ntc\main.o
+_UART1_DR                           00005231   defined in ..\ntc\main.o
+_UART1_GTR                          00005239   defined in ..\ntc\main.o
+_UART1_PSCR                         0000523a   defined in ..\ntc\main.o
+_UART1_SR                           00005230   defined in ..\ntc\main.o
+_WWDG_CR                            000050d1   defined in ..\ntc\main.o
+_WWDG_WR                            000050d2   defined in ..\ntc\main.o
+__endmem                            000001ff   defined in command file
+                                               *** not used ***
+__endzp                             0000000a   defined in command file section .ubsct
+                                               used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+__idesc__                           00008084   defined in linker section .init
+                                               used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+__memory                            00000100   defined in command file section .bss
+                                               used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+__stack                             000003ff   defined in command file
+                                               used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+__startmem                          00000100   defined in command file section .bss
+                                               *** not used ***
+__stext                             00008087   defined in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8 section .text
+                                               used in ..\ntc\stm8_interrupt_vector.o
+__vectab                            00008000   defined in ..\ntc\stm8_interrupt_vector.o section .const
+_exit                               000080d0   defined in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8 section .text
+_main                               000085b7   defined in ..\ntc\main.o section .text
+                                               used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+c_ctof                              00008a19   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ctof.o section .text
+                                               used in ..\ntc\main.o
+c_divsl                             ********   *** removed from (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ldiv.o ***
+c_divul                             ********   *** removed from (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ldiv.o ***
+c_fcmp                              00008a21   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)fcmp.o section .text
+                                               used in ..\ntc\main.o
+c_fmul                              00008a57   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)fmul.o section .text
+                                               used in ..\ntc\main.o
+c_ftoi                              00008b2c   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ftol.o section .text
+                                               *** not used ***
+c_ftol                              00008b32   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ftol.o section .text
+                                               used in ..\ntc\main.o
+c_itof                              00008b8e   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)itof.o section .text
+                                               used in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ctof.o
+c_lgneg                             ********   *** removed from (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lgneg.o ***
+c_lneg                              ********   *** removed from (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lneg.o ***
+c_lreg                              00000000   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lreg.o section .ubsct
+                                               used in ..\ntc\stm8s_clk.o
+                                                       ..\ntc\main.o
+                                                       (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)fcmp.o
+                                                       (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)fmul.o
+                                                       (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ftol.o
+                                                       (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)itof.o
+                                                       (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ltor.o
+                                                       (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ldiv.o
+                                                       (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)lneg.o
+                                                       (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)rtol.o
+c_ltor                              00008bbc   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ltor.o section .text
+                                               used in ..\ntc\stm8s_clk.o
+                                                       ..\ntc\main.o
+c_ludv                              ********   *** removed from (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ludiv.o ***
+c_okmul                             00008a65   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)fmul.o section .text
+                                               *** not used ***
+c_rtol                              00008bce   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)rtol.o section .text
+                                               used in ..\ntc\stm8s_clk.o
+                                                       ..\ntc\main.o
+c_sdivx                             00008be6   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)sdivx.o section .text
+                                               used in ..\ntc\main.o
+c_smodx                             00008be0   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)sdivx.o section .text
+                                               used in ..\ntc\main.o
+c_x                                 00000004   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)xreg.o section .ubsct
+                                               used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+                                                       (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)fcmp.o
+                                                       (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)fmul.o
+                                                       (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)ldiv.o
+                                                       (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)sdivx.o
+c_y                                 00000007   defined in (C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\libm0.sm8)yreg.o section .ubsct
+                                               used in C:\Program Files (x86)\COSMIC\CXSTM8_32K\Lib\crtsi0.sm8
+f_ADC1_IRQHandler                   ********   *** removed from ..\ntc\stm8s_it.o ***
+f_AWU_IRQHandler                    ********   *** removed from ..\ntc\stm8s_it.o ***
+f_CLK_IRQHandler                    ********   *** removed from ..\ntc\stm8s_it.o ***
+f_EEPROM_EEC_IRQHandler             ********   *** removed from ..\ntc\stm8s_it.o ***
+f_EXTI_PORTA_IRQHandler             ********   *** removed from ..\ntc\stm8s_it.o ***
+f_EXTI_PORTB_IRQHandler             ********   *** removed from ..\ntc\stm8s_it.o ***
+f_EXTI_PORTC_IRQHandler             ********   *** removed from ..\ntc\stm8s_it.o ***
+f_EXTI_PORTD_IRQHandler             ********   *** removed from ..\ntc\stm8s_it.o ***
+f_EXTI_PORTE_IRQHandler             ********   *** removed from ..\ntc\stm8s_it.o ***
+f_EXTI_PORTF_IRQHandler             ********   *** removed from ..\ntc\stm8s_it.o ***
+f_I2C_IRQHandler                    ********   *** removed from ..\ntc\stm8s_it.o ***
+f_NonHandledInterrupt               00008c0b   defined in ..\ntc\stm8_interrupt_vector.o section .text
+f_SPI_IRQHandler                    ********   *** removed from ..\ntc\stm8s_it.o ***
+f_TIM1_CAP_COM_IRQHandler           ********   *** removed from ..\ntc\stm8s_it.o ***
+f_TIM1_UPD_OVF_TRG_BRK_IRQHandler   ********   *** removed from ..\ntc\stm8s_it.o ***
+f_TIM5_CAP_COM_IRQHandler           ********   *** removed from ..\ntc\stm8s_it.o ***
+f_TIM5_UPD_OVF_BRK_TRG_IRQHandler   ********   *** removed from ..\ntc\stm8s_it.o ***
+f_TIM6_UPD_OVF_TRG_IRQHandler       ********   *** removed from ..\ntc\stm8s_it.o ***
+f_TLI_IRQHandler                    ********   *** removed from ..\ntc\stm8s_it.o ***
+f_TRAP_IRQHandler                   ********   *** removed from ..\ntc\stm8s_it.o ***
+f_UART1_RX_IRQHandler               ********   *** removed from ..\ntc\stm8s_it.o ***
+f_UART1_TX_IRQHandler               ********   *** removed from ..\ntc\stm8s_it.o ***
