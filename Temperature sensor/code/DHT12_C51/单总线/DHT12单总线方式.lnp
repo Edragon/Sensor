@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"main.obj" 
+TO "DHT12单总线方式" 
+RAMSIZE(256) 

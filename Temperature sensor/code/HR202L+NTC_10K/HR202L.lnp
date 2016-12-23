@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"main.obj" 
+TO "HR202L" 
+RAMSIZE(256) 

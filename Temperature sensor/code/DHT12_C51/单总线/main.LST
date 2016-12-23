@@ -1,0 +1,551 @@
+C51 COMPILER V9.01   MAIN                                                                  10/17/2016 12:18:03 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //12M
+   2          
+   3          #include <reg51.h>
+   4          #include <intrins.h>
+   5          #include "StringData.h"
+   6          
+   7          #define uchar unsigned char
+   8          #define uint  unsigned int
+   9          #define u8 unsigned char
+  10          #define u16  unsigned int
+  11          #define u32  unsigned long int
+  12          
+  13          //* STC15W408AS¼Ä´æÆ÷²¹³ä 
+  14          sfr AUXR1 = 0XA2;
+  15          sfr AUXR = 0X8E;
+  16          sfr TH2 = 0XD6;
+  17          sfr TL2 = 0XD7;
+  18          sfr P4 = 0xc0;
+  19          sfr P5 = 0xc8;
+  20          
+  21          sfr SPSTAT      =   0xCD;   //
+  22          sfr SPCTL       =   0xCE;   //
+  23          sfr SPDAT       =   0xCF;   //
+  24          sfr P1M1=0x91;
+  25          sfr P1M0=0x92;
+  26          sfr P2M1=0x95;
+  27          sfr P2M0=0x96;
+  28          sfr P3M1=0xB1;
+  29          sfr P3M0=0xB2;
+  30          sfr P5M1=0xC9;
+  31          sfr P5M0=0xCA; 
+  32          
+  33          //ADC
+  34          sfr ADC_CONTR = 0xBC;   //´øADÏµÁÐ
+  35          sfr ADC_RES   = 0xBD;   //´øADÏµÁÐ
+  36          sfr ADC_RESL  = 0xBE;   //´øADÏµÁÐ
+  37          sfr P1ASF = 0x9D;
+  38          sfr PCON2   = 0x97;
+  39          
+  40          //¶¨Ê±Æ÷2
+  41          sfr T2H=0xD6;
+  42          sfr T2L=0xD7;
+  43          sfr IE2=0xAF;
+  44          
+  45          #define ID_ADDR_ROM 0x1ff7//8K³ÌÐò¿Õ¼äµÄMCU
+  46          
+  47          #define ADC_POWER       0x80//ADCµçÔ´¿ØÖÆÎ»
+  48          #define ADC_FLAG        0x10//ADCÍê³É±êÖ¾
+  49          #define ADC_START       0x08//ADCÆðÊ¼¿ØÖÆÎ»
+  50          #define ADC_SPEEDLL     0x00//540¸öÊ±ÖÓ×ª»»Ò»´Î
+  51          #define ADC_SPEEDL      0x20//360Ê±ÖÓ
+  52          #define ADC_SPEEDH      0x40//180Ê±ÖÓ
+  53          #define ADC_SPEEDHH     0x60//90Ê±ÖÓ
+  54          
+  55          
+C51 COMPILER V9.01   MAIN                                                                  10/17/2016 12:18:03 PAGE 2   
+
+  56          sbit JLX_CS=P3^3;
+  57          sbit JLX_RST=P3^6;
+  58          sbit JLX_RS=P3^7;
+  59          sbit JLX_SCK=P1^0;
+  60          sbit JLX_SDA=P1^1;
+  61          
+  62          sbit DHT12_SDA=P1^5;
+  63          
+  64          u8 lcd[10];//ÏÔÊ¾»º´æ
+  65          
+  66          u16 Temprature,Humi;//¶¨ÒåÎÂÊª¶È±äÁ¿ £¬´Ë±äÁ¿ÎªÈ«¾Ö±äÁ¿
+  67          bit fushu=0;//ÎÂ¶ÈÊÇ·ñÎª¸º
+  68          u8 Sensor_AnswerFlag=0;//¶¨Òå´«¸ÐÆ÷ÏìÓ¦±êÖ¾
+  69          u8 Sensor_ErrorFlag;  //¶¨Òå¶ÁÈ¡´«¸ÐÆ÷´íÎó±êÖ¾
+  70          
+  71          void Delay1ms()         //@12.000MHz
+  72          {
+  73   1              unsigned char i, j;
+  74   1      
+  75   1              i = 12;
+  76   1              j = 169;
+  77   1              do
+  78   1              {
+  79   2                      while (--j);
+  80   2              } while (--i);
+  81   1      }
+  82          
+  83          void DelayMs(unsigned int i)  //ÑÓÊ±NºÁÃë£¬0~65535ms
+  84          {
+  85   1         while(i--) Delay1ms();
+  86   1      }
+  87          
+  88          
+  89           
+  90          void delay_us(unsigned char n)
+  91          {
+  92   1          while (n--)
+  93   1          {
+  94   2              _nop_();
+  95   2              _nop_();
+  96   2              _nop_();
+  97   2              _nop_();
+  98   2          }
+  99   1      }
+ 100          
+ 101          
+ 102          /*****************Òº¾§ÆÁº¯Êý**********************/
+ 103           /*Ð´Ö¸Áîµ½ LCD Ä£¿é*/
+ 104          void JLX_SendCommand(u8 Data)
+ 105          {
+ 106   1              u8 i;
+ 107   1              JLX_CS=0;
+ 108   1              JLX_RS=0;
+ 109   1              for(i=0;i<8;i++)
+ 110   1              {
+ 111   2                      JLX_SCK=0;
+ 112   2                      if(Data&0x80) JLX_SDA=1;
+ 113   2                      else JLX_SDA=0;
+ 114   2                      JLX_SCK=1;
+ 115   2                      Data=Data<<=1;
+ 116   2              }
+ 117   1      }
+C51 COMPILER V9.01   MAIN                                                                  10/17/2016 12:18:03 PAGE 3   
+
+ 118          
+ 119          /*Ð´Êý¾Ýµ½ LCD Ä£¿é*/
+ 120          void JLX_SendData(u8 Data)
+ 121          {
+ 122   1              u8 i;
+ 123   1              JLX_CS=0;
+ 124   1              JLX_RS=1;
+ 125   1              for(i=0;i<8;i++)
+ 126   1              {
+ 127   2                      JLX_SCK=0;
+ 128   2                      if(Data&0x80) JLX_SDA=1;
+ 129   2                      else JLX_SDA=0;
+ 130   2                      JLX_SCK=1;
+ 131   2                      Data=Data<<=1;
+ 132   2              }
+ 133   1      }
+ 134          
+ 135          /*LCD Ä£¿é³õÊ¼»¯*/
+ 136          void JLX_InitLCD()
+ 137          {
+ 138   1              JLX_CS=0;
+ 139   1              JLX_RST=0;      /*µÍµçÆ½¸´Î»*/
+ 140   1              DelayMs(2);
+ 141   1              JLX_RST=1;      /*¸´Î»Íê±Ï*/
+ 142   1              DelayMs(10);
+ 143   1              JLX_SendCommand(0xE2);  /*Èí¸´Î»*/
+ 144   1              DelayMs(1);
+ 145   1              JLX_SendCommand(0x2C); /*ÉýÑ¹²½¾Û 1*/
+ 146   1              JLX_SendCommand(0x2E); /*ÉýÑ¹²½¾Û 2*/
+ 147   1              JLX_SendCommand(0x2F); /*ÉýÑ¹²½¾Û 3*/
+ 148   1              DelayMs(1);
+ 149   1              JLX_SendCommand(0x23); /*´Öµ÷¶Ô±È¶È£¬¿ÉÉèÖÃ·¶Î§ 0x20¡«0x27*/
+ 150   1              JLX_SendCommand(0x81); /*Î¢µ÷¶Ô±È¶È*/
+ 151   1              JLX_SendCommand(0x28); /*0x1a,Î¢µ÷¶Ô±È¶ÈµÄÖµ£¬¿ÉÉèÖÃ·¶Î§ 0x00¡«0x3f*/
+ 152   1              JLX_SendCommand(0xA2); /*1/9 Æ«Ñ¹±È£¨bias£©*/
+ 153   1              JLX_SendCommand(0xC8); /*ÐÐÉ¨ÃèË³Ðò£º´ÓÉÏµ½ÏÂ*/
+ 154   1              JLX_SendCommand(0xA0); /*ÁÐÉ¨ÃèË³Ðò£º´Ó×óµ½ÓÒ*/
+ 155   1              JLX_SendCommand(0x40); /*ÆðÊ¼ÐÐ£ºµÚÒ»ÐÐ¿ªÊ¼*/
+ 156   1              JLX_SendCommand(0xAF); /*¿ªÏÔÊ¾*/
+ 157   1              JLX_CS=1;
+ 158   1      }
+ 159          
+ 160          /*ÉèÖÃÒº¾§ÆÁµÄÏÔÊ¾µØÖ·*/
+ 161          void JLX_LCDAddress(u8 Page,u8 Column)
+ 162          {
+ 163   1              JLX_CS=0;
+ 164   1              Column=Column-1;        //ÎÒÃÇÆ½³£ËùËµµÄµÚ 1 ÁÐ£¬ÔÚ LCD Çý¶¯ IC ÀïÊÇµÚ 0 ÁÐ¡£ËùÒÔÔÚÕâÀï¼õÈ¥ 1.
+ 165   1              Page=Page-1;
+ 166   1              JLX_SendCommand(0xB0+Page);     //ÉèÖÃÒ³µØÖ·¡£Ã¿Ò³ÊÇ 8 ÐÐ¡£Ò»¸ö»­ÃæµÄ 64 ÐÐ±»·Ö³É 8 ¸öÒ³¡£
+ 167   1                                          //ÎÒÃÇÆ½³£ËùËµµÄµÚ 1 Ò³£¬ÔÚ LCD Çý¶¯ IC ÀïÊÇµÚ 0 Ò³£¬ËùÒÔÔÚÕâÀï¼õÈ¥ 1
+ 168   1              JLX_SendCommand(((Column>>4)&0x0F)+0x10); //ÉèÖÃÁÐµØÖ·µÄ¸ß 4 Î» 
+ 169   1              JLX_SendCommand(Column&0x0F);   //ÉèÖÃÁÐµØÖ·µÄµÍ 4 Î»
+ 170   1      }
+ 171          
+ 172          /*È«ÆÁÇåÆÁ*/
+ 173          void JLX_ClearScreen()
+ 174          {
+ 175   1              u8 i,j;
+ 176   1              JLX_CS=0;
+ 177   1              for(i=0;i<9;i++)
+ 178   1              {
+ 179   2                      JLX_LCDAddress(1+i,1);
+C51 COMPILER V9.01   MAIN                                                                  10/17/2016 12:18:03 PAGE 4   
+
+ 180   2                      for(j=0;j<132;j++)
+ 181   2                      {
+ 182   3                              JLX_SendData(0x00);     /*Ð´Êý¾Ýµ½ LCD,Ã¿Ð´ÍêÒ»¸ö 8 Î»µÄÊý¾ÝºóÁÐµØÖ·×Ô¶¯¼Ó 1*/
+ 183   3                      }
+ 184   2              }
+ 185   1              JLX_CS=1;
+ 186   1      }
+ 187          
+ 188          
+ 189          //È«ÆÁÏÔÊ¾ºÚµã 128*64 dots
+ 190          //void JLX_FullScreenDots()
+ 191          //{
+ 192          //      u8 i,j;
+ 193          //    JLX_CS=0;
+ 194          //      for(i=0;i<8;i++)
+ 195          //      {
+ 196          //              JLX_LCDAddress(i+1,1);
+ 197          //              for(j=0;j<128;j++)
+ 198          //              {
+ 199          //                      JLX_SendData(0xFF);/*Ð´Êý¾Ýµ½ LCD,Ã¿Ð´ÍêÒ»¸ö 8 Î»µÄÊý¾ÝºóÁÐµØÖ·×Ô¶¯¼Ó 1*/
+ 200          //              }
+ 201          //      }
+ 202          //      JLX_CS=1;
+ 203          //}
+ 204          
+ 205          
+ 206          /*ÏÔÊ¾ 12864 µãÕóÍ¼Ïñ*/
+ 207          
+ 208          //void JLX_DisplayPicture128x64(u8 *dp)
+ 209          //{
+ 210          //      u8 i,j;
+ 211          //      JLX_CS=0;
+ 212          //      
+ 213          //      for(j=0;j<8;j++)
+ 214          //      {
+ 215          //              JLX_LCDAddress(j+1,1);
+ 216          //              for (i=0;i<128;i++)
+ 217          //              {
+ 218          //                      JLX_SendData(*dp);      /*Ð´Êý¾Ýµ½ LCD,Ã¿Ð´ÍêÒ»¸ö 8 Î»µÄÊý¾ÝºóÁÐµØÖ·×Ô¶¯¼Ó 1*/
+ 219          //                      dp++;
+ 220          //              }
+ 221          //      }
+ 222          //      JLX_CS=1;
+ 223          //}
+ 224          
+ 225          /*ÏÔÊ¾ 32x32 µãÕóÍ¼Ïñ¡¢ºº×Ö¡¢ÉúÆ§×Ö»ò 32x32 µãÕóµÄÆäËûÍ¼±ê*/
+ 226          //void JLX_DisplayPicture32x32(u8 Page,u8 Column,u8 *dp)
+ 227          //{
+ 228          //      u8 i,j;
+ 229          //      JLX_CS=0;
+ 230          //      for(j=0;j<4;j++)
+ 231          //      {
+ 232          //              JLX_LCDAddress(Page+j,Column);
+ 233          //              for (i=0;i<31;i++)
+ 234          //              {
+ 235          //                      JLX_SendData(*dp);      /*Ð´Êý¾Ýµ½ LCD,Ã¿Ð´ÍêÒ»¸ö 8 Î»µÄÊý¾ÝºóÁÐµØÖ·×Ô¶¯¼Ó 1*/
+ 236          //                      dp++;
+ 237          //              }
+ 238          //      }
+ 239          //      JLX_CS=1;
+ 240          //}
+ 241          
+C51 COMPILER V9.01   MAIN                                                                  10/17/2016 12:18:03 PAGE 5   
+
+ 242          /*ÏÔÊ¾ 16x16 µãÕóÍ¼Ïñ¡¢ºº×Ö¡¢ÉúÆ§×Ö»ò 16x16 µãÕóµÄÆäËûÍ¼±ê*/
+ 243          void JLX_DisplayPicture16x16(u8 Page,u8 Column,u8 *dp)
+ 244          {
+ 245   1              u8 i,j;
+ 246   1              JLX_CS=0;
+ 247   1              for(j=0;j<2;j++)
+ 248   1              {
+ 249   2                      JLX_LCDAddress(Page+j,Column);
+ 250   2                      for (i=0;i<16;i++)
+ 251   2                      {
+ 252   3                              JLX_SendData(*dp);      /*Ð´Êý¾Ýµ½ LCD,Ã¿Ð´ÍêÒ»¸ö 8 Î»µÄÊý¾ÝºóÁÐµØÖ·×Ô¶¯¼Ó 1*/
+ 253   3                              dp++;
+ 254   3                      }
+ 255   2              }
+ 256   1              JLX_CS=1;
+ 257   1      }
+ 258          
+ 259          /*ÏÔÊ¾ 8x16 µãÕóÍ¼Ïñ¡¢ASCII, »ò 8x16 µãÕóµÄ×ÔÔì×Ö·û¡¢ÆäËûÍ¼±ê*/
+ 260          //void JLX_DisplayPicture8x16(u8 Page,u8 Column,u8 *dp)
+ 261          //{
+ 262          //      u8 i,j;
+ 263          //      JLX_CS=0;
+ 264          //      for(j=0;j<2;j++)
+ 265          //      {
+ 266          //              JLX_LCDAddress(Page+j,Column);
+ 267          //              for (i=0;i<8;i++)
+ 268          //              {
+ 269          //                      JLX_SendData(*dp);      /*Ð´Êý¾Ýµ½ LCD,Ã¿Ð´ÍêÒ»¸ö 8 Î»µÄÊý¾ÝºóÁÐµØÖ·×Ô¶¯¼Ó 1*/
+ 270          //                      dp++;
+ 271          //              }
+ 272          //      }
+ 273          //      JLX_CS=1;
+ 274          //}
+ 275          
+ 276          //ÏÔÊ¾8*16µÄ×Ö·û´®
+ 277          void JLX_DisplayString8x16(u8 Page,u8 Column,u8 *text)
+ 278          {
+ 279   1              u8 i=0,j,k,n;
+ 280   1              JLX_CS=0;
+ 281   1              while(text[i]>0x00)
+ 282   1              {
+ 283   2                      if((text[i]>=0x20)&&(text[i]<=0x7E)) //32~126 ASCIIÂë±íµÄ×Ö·û´®ÊýÖµÖ®ÄÚ
+ 284   2                      {
+ 285   3                              j=text[i]-0x20;//ASCIIÂëÖµ-32£¬¸ÕºÃÊÇ¸Ã×Ö·ûµÄascii_table_8x16Êý×éÖÐµãÕó¿ªÊ¼µØÖ·
+ 286   3                              for(n=0;n<2;n++)
+ 287   3                              {
+ 288   4                                      JLX_LCDAddress(Page+n,Column);
+ 289   4                                      for(k=0;k<8;k++)
+ 290   4                                      {
+ 291   5                                              JLX_SendData(ascii_table_8x16[j][k+8*n]);/*ÏÔÊ¾ 5x7 µÄ ASCII ×Öµ½ LCD ÉÏ£¬y ÎªÒ³µØÖ·£¬x ÎªÁÐµØÖ·£¬×îº
+             -óÎªÊý¾Ý*/
+ 292   5                                      }
+ 293   4                              }
+ 294   3                              i++;
+ 295   3                              Column+=8;
+ 296   3                      }
+ 297   2                      else
+ 298   2                      i++;
+ 299   2              }
+ 300   1      //      JLX_CS=1;
+ 301   1      }
+ 302          
+C51 COMPILER V9.01   MAIN                                                                  10/17/2016 12:18:03 PAGE 6   
+
+ 303          
+ 304          //ÏÔÊ¾5*7µÄ×Ö·û¡£ÓÃµÄÊÇ6*8µÄÊý¾Ý£¬»ù±¾ÊÇÈ«²¿µÄÒº¾§¶¼ÊÇÕâÑù¡£
+ 305          //void JLX_DisplayString5x7(u8 Page,u8 Column,u8 *text)
+ 306          //{
+ 307          //      u8 i=0,j,k;
+ 308          //      JLX_CS=0;
+ 309          //      while(text[i]>0x00)
+ 310          //      {
+ 311          //              if((text[i]>=0x20)&&(text[i]<0x7E))
+ 312          //              {
+ 313          //                      j=text[i]-0x20;
+ 314          //                      JLX_LCDAddress(Page,Column);
+ 315          //                      for(k=0;k<5;k++)
+ 316          //                      {
+ 317          //                              JLX_SendData(ascii_table_5x7[j][k]);/*ÏÔÊ¾ 5x7 µÄ ASCII ×Öµ½ LCD ÉÏ£¬y ÎªÒ³µØÖ·£¬x ÎªÁÐµØÖ·£¬×îºóÎªÊ
+             -ý¾Ý*/
+ 318          //                      }
+ 319          //                      i++;
+ 320          //                      Column+=6;
+ 321          //              }
+ 322          //              else
+ 323          //              i++;
+ 324          //      }
+ 325          //}
+ 326          
+ 327          /***********************Òº¾§ÆÁº¯Êý½áÊø****************/
+ 328          
+ 329          /********************************************\
+ 330          |* ¹¦ÄÜ£º ¶Á´«¸ÐÆ÷·¢ËÍµÄµ¥¸ö×Ö½Ú                *|
+ 331          \********************************************/
+ 332          u8 DHT12_Single_ReadByte(void)
+ 333          {
+ 334   1              u8 i;
+ 335   1              u16 j;
+ 336   1              u8 Data=0;
+ 337   1              u8 Bit=0;
+ 338   1              
+ 339   1              for(i=0;i<8;i++)
+ 340   1              {
+ 341   2                      while(!DHT12_SDA)//¼ì²âÉÏ´ÎµÍµçÆ½ÊÇ·ñ½áÊø
+ 342   2                      {
+ 343   3                              if(++j>=50000) //·ÀÖ¹½øÈëËÀÑ­»·
+ 344   3                              {
+ 345   4                                      break;
+ 346   4                              }
+ 347   3                      }
+ 348   2                      //ÑÓÊ±Min=26us Max70us Ìø¹ýÊý¾Ý"0" µÄ¸ßµçÆ½              
+ 349   2                      delay_us(30);
+ 350   2      
+ 351   2                      //ÅÐ¶Ï´«¸ÐÆ÷·¢ËÍÊý¾ÝÎ»
+ 352   2                      Bit=0;
+ 353   2                      if(DHT12_SDA)Bit=1;
+ 354   2                      j=0;
+ 355   2                      while(DHT12_SDA)        //µÈ´ý¸ßµçÆ½½áÊø
+ 356   2                      {
+ 357   3                              if(++j>=50000) //·ÀÖ¹½øÈëËÀÑ­»·
+ 358   3                              {
+ 359   4                                      break;
+ 360   4                              }               
+ 361   3                      }
+ 362   2                      Data<<=1;
+ 363   2                      Data|=Bit;
+C51 COMPILER V9.01   MAIN                                                                  10/17/2016 12:18:03 PAGE 7   
+
+ 364   2              }
+ 365   1              return Data;
+ 366   1      }
+ 367          
+ 368          
+ 369          void Sensor_Read(void)
+ 370          {       
+ 371   1              u16 j;
+ 372   1              u8 Humi_H,Humi_L,Temp_H,Temp_L,Temp_CAL,temp;
+ 373   1              //Ö÷»ú·¢ËÍÆðÊ¼ÐÅºÅ
+ 374   1              DHT12_SDA=0;    //Ö÷»ú°ÑÊý¾Ý×ÜÏß£¨SDA£©À­µÍ
+ 375   1              DelayMs(20);//À­µÍÒ»¶ÎÊ±¼ä£¨ÖÁÉÙ18ms£©£¬ Í¨Öª´«¸ÐÆ÷×¼±¸Êý¾Ý
+ 376   1              DHT12_SDA=1;     //ÊÍ·Å×ÜÏß
+ 377   1              delay_us(30);//ÑÓÊ±30us
+ 378   1      
+ 379   1              Sensor_AnswerFlag=0;    //´«¸ÐÆ÷ÏìÓ¦±êÖ¾
+ 380   1              //ÅÐ¶Ï´Ó»úÊÇ·ñÓÐµÍµçÆ½ÏìÓ¦ÐÅºÅ Èç²»ÏìÓ¦ÔòÌø³ö£¬ÏìÓ¦ÔòÏòÏÂÔËÐÐ     
+ 381   1              if(DHT12_SDA==0)
+ 382   1              {
+ 383   2                      Sensor_AnswerFlag=1;    //ÊÕµ½ÆðÊ¼ÐÅºÅ
+ 384   2      
+ 385   2                      j=0;
+ 386   2                      while(!DHT12_SDA) //ÅÐ¶Ï´Ó»ú·¢³ö 80us µÄµÍµçÆ½ÏìÓ¦ÐÅºÅÊÇ·ñ½áÊø  
+ 387   2                      {
+ 388   3                              if(++j>=500) //·ÀÖ¹½øÈëËÀÑ­»·
+ 389   3                              {
+ 390   4                                      Sensor_ErrorFlag=1;
+ 391   4                                      break;
+ 392   4                              }
+ 393   3                      }
+ 394   2      
+ 395   2                      j=0;
+ 396   2                      while(DHT12_SDA)//ÅÐ¶Ï´Ó»úÊÇ·ñ·¢³ö 80us µÄ¸ßµçÆ½£¬Èç·¢³öÔò½øÈëÊý¾Ý½ÓÊÕ×´Ì¬
+ 397   2                      {
+ 398   3                              if(++j>=800) //·ÀÖ¹½øÈëËÀÑ­»·
+ 399   3                              {
+ 400   4                                      Sensor_ErrorFlag=1;
+ 401   4                                      break;
+ 402   4                              }               
+ 403   3                      }
+ 404   2                      //½ÓÊÕÊý¾Ý
+ 405   2                      Humi_H=DHT12_Single_ReadByte();
+ 406   2                      Humi_L=DHT12_Single_ReadByte();
+ 407   2                      Temp_H=DHT12_Single_ReadByte(); 
+ 408   2                      Temp_L=DHT12_Single_ReadByte();
+ 409   2                      Temp_CAL=DHT12_Single_ReadByte();
+ 410   2      
+ 411   2      
+ 412   2                      temp = Humi_H+Humi_L+Temp_H+Temp_L;//Ö»È¡µÍ8Î»
+ 413   2      
+ 414   2                      if(Temp_CAL==temp)//Èç¹ûÐ£Ñé³É¹¦£¬ÍùÏÂÔËÐÐ
+ 415   2                      {
+ 416   3                              Humi=Humi_H*10+Humi_L; //Êª¶È
+ 417   3                              if(Temp_L&0x80) //Îª¸ºÎÂ¶È
+ 418   3                              {
+ 419   4                                      fushu=1;
+ 420   4                                      Temprature =Temp_H*10+(Temp_L&0x7F);
+ 421   4                              }
+ 422   3                              else   //ÎªÕýÎÂ¶È
+ 423   3                              {
+ 424   4                                      fushu=0;
+ 425   4                                      Temprature=Temp_H*10+Temp_L;//ÎªÕýÎÂ¶È
+C51 COMPILER V9.01   MAIN                                                                  10/17/2016 12:18:03 PAGE 8   
+
+ 426   4                              } 
+ 427   3                      
+ 428   3                              //ÅÐ¶ÏÎÂÊª¶ÈÊÇ·ñ³¬¹ý²âÁ¿·¶Î§£¨ÎÂ¶È£º-20¡æ~60ÉãÊÏ¶È£»Êª¶È£º20%RH~95%RH£©         
+ 429   3                              if(Humi>950) 
+ 430   3                              {
+ 431   4                                Humi=950;
+ 432   4                              }
+ 433   3                              if(Humi<200)
+ 434   3                              {
+ 435   4                                      Humi =200;
+ 436   4                              }
+ 437   3                              if(Temprature>600&&fushu==0)
+ 438   3                              {
+ 439   4                                Temprature=600;
+ 440   4                              }
+ 441   3                              if(Temprature>200&&fushu==1)
+ 442   3                              {
+ 443   4                                      Temprature=200;
+ 444   4                              }
+ 445   3      
+ 446   3                              lcd[0]=' ';
+ 447   3                              lcd[1]=Humi%1000/100+48;
+ 448   3                              lcd[2]=Humi%100/10+48;  
+ 449   3                              lcd[3]='.';     
+ 450   3                              lcd[4]=Humi%10+48;
+ 451   3                              lcd[5]=' ';     
+ 452   3                              lcd[6]=' ';
+ 453   3                          lcd[7]=' ';
+ 454   3                              lcd[8]=' ';
+ 455   3                              lcd[9]=' ';
+ 456   3              
+ 457   3                              JLX_DisplayString8x16(3,49,lcd);
+ 458   3                              JLX_DisplayPicture16x16(3,97,baifenbi);
+ 459   3              
+ 460   3                              if(fushu==1)lcd[0]='-';
+ 461   3                              else lcd[0]=' ';
+ 462   3                              lcd[1]=Temprature%1000/100+48;
+ 463   3                              lcd[2]=Temprature%100/10+48;
+ 464   3                              lcd[3]='.';     
+ 465   3                              lcd[4]=Temprature%10+48;
+ 466   3              
+ 467   3                              JLX_DisplayString8x16(5,49,lcd);
+ 468   3                              JLX_DisplayPicture16x16(5,97,sheshidu);
+ 469   3                      }
+ 470   2                      else //Ð£ÑéÊ§°Ü
+ 471   2                      {
+ 472   3                              JLX_DisplayString8x16(7,1,"CRC Error       ");
+ 473   3                      }
+ 474   2              }
+ 475   1              else
+ 476   1              {
+ 477   2                      JLX_DisplayString8x16(7,1,"DTH12 Not Find  ");
+ 478   2      
+ 479   2              }
+ 480   1      }
+ 481          
+ 482          void main(void)
+ 483          {
+ 484   1              DelayMs(200);//ÑÓÊ±200msµÈ´ýÎÈ¶¨ÔËÐÐ
+ 485   1      
+ 486   1              JLX_InitLCD();
+ 487   1              JLX_ClearScreen();
+C51 COMPILER V9.01   MAIN                                                                  10/17/2016 12:18:03 PAGE 9   
+
+ 488   1      
+ 489   1          JLX_DisplayString8x16(1,1," DHT12_One_Wire ");
+ 490   1      
+ 491   1              JLX_DisplayPicture16x16(3,1,shi);
+ 492   1              JLX_DisplayPicture16x16(3,17,du);
+ 493   1              JLX_DisplayString8x16(3,33,":");
+ 494   1              JLX_DisplayString8x16(3,41," ");
+ 495   1      
+ 496   1              JLX_DisplayPicture16x16(5,1,wen);
+ 497   1              JLX_DisplayPicture16x16(5,17,du);
+ 498   1              JLX_DisplayString8x16(5,33,":");
+ 499   1              JLX_DisplayString8x16(5,41," ");
+ 500   1      
+ 501   1              JLX_DisplayString8x16(7,1,"                ");
+ 502   1      
+ 503   1              while(1)
+ 504   1              {
+ 505   2                  DelayMs(1000);
+ 506   2                  Sensor_Read();
+ 507   2              }
+ 508   1      }
+ 509          
+ 510          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1195    ----
+   CONSTANT SIZE    =   1752    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     16      16
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
