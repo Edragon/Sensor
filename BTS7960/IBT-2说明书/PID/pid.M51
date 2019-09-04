@@ -1,0 +1,234 @@
+BL51 BANKED LINKER/LOCATER V5.12                                                        01/15/2007  11:42:55  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.12, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE pid.obj TO pid
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  pid.obj (PID)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPADD)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LSTPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LSTOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDOPTR0)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?MEMSET)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDIDATA)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDXDATA)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDPDATA)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDCODE)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDIDATA0)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDXDATA0)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDPDATA0)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LLDCODE0)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LSTIDATA)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LSTXDATA)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LSTPDATA)
+
+
+LINK MAP OF MODULE:  pid (PID)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0033H     UNIT         _DATA_GROUP_
+            IDATA   003BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     03C0H     UNIT         ?C?LIB_CODE
+            CODE    03C3H     0103H     UNIT         ?PR?_PIDCALC?PID
+            CODE    04C6H     0059H     UNIT         ?PR?MAIN?PID
+            CODE    051FH     000CH     UNIT         ?C_C51STARTUP
+            CODE    052BH     0009H     UNIT         ?PR?_PIDINIT?PID
+            CODE    0534H     0009H     UNIT         ?PR?_ACTUATOR?PID
+            CODE    053DH     0008H     UNIT         ?PR?SENSOR?PID
+
+
+
+OVERLAY MAP OF MODULE:   pid (PID)
+
+
+BL51 BANKED LINKER/LOCATER V5.12                                                      01/15/2007  11:42:55  PAGE 2
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?PID
+
+?PR?MAIN?PID                   0008H    0024H
+  +--> ?PR?_PIDINIT?PID
+  +--> ?PR?SENSOR?PID
+  +--> ?PR?_PIDCALC?PID
+  +--> ?PR?_ACTUATOR?PID
+
+?PR?_PIDCALC?PID               002CH    000FH
+
+?PR?_ACTUATOR?PID              002CH    0004H
+
+
+
+SYMBOL TABLE OF MODULE:  pid (PID)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PID
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:053DH         PUBLIC        sensor
+  C:04C6H         PUBLIC        main
+  C:03C3H         PUBLIC        _PIDCalc
+  C:0534H         PUBLIC        _actuator
+  C:052BH         PUBLIC        _PIDInit
+  -------         PROC          _PIDCALC
+  D:002CH         SYMBOL        pp
+  D:002FH         SYMBOL        NextPoint
+  -------         DO            
+  D:0033H         SYMBOL        dError
+  D:0037H         SYMBOL        Error
+  -------         ENDDO         
+  C:03C3H         LINE#         40
+  C:03D1H         LINE#         41
+  C:03D1H         LINE#         45
+  C:03E7H         LINE#         46
+  C:040FH         LINE#         47
+  C:0442H         LINE#         48
+  C:0454H         LINE#         49
+  C:0462H         LINE#         50
+  C:04C5H         LINE#         54
+  -------         ENDPROC       _PIDCALC
+  -------         PROC          _PIDINIT
+  D:0001H         SYMBOL        pp
+  C:052BH         LINE#         60
+  C:052BH         LINE#         61
+  C:052BH         LINE#         62
+  -------         ENDPROC       _PIDINIT
+  -------         PROC          SENSOR
+  C:053DH         LINE#         69
+  C:053DH         LINE#         70
+  C:053DH         LINE#         71
+BL51 BANKED LINKER/LOCATER V5.12                                                      01/15/2007  11:42:55  PAGE 3
+
+
+  C:0544H         LINE#         72
+  -------         ENDPROC       SENSOR
+  -------         PROC          _ACTUATOR
+  D:002CH         SYMBOL        rDelta
+  C:0534H         LINE#         74
+  C:053CH         LINE#         75
+  -------         ENDPROC       _ACTUATOR
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        sPID
+  D:0024H         SYMBOL        rOut
+  D:0028H         SYMBOL        rIn
+  -------         ENDDO         
+  C:04C6H         LINE#         77
+  C:04C6H         LINE#         78
+  C:04C6H         LINE#         83
+  C:04CFH         LINE#         84
+  C:04DAH         LINE#         85
+  C:04E4H         LINE#         86
+  C:04ECH         LINE#         87
+  C:04F6H         LINE#         89
+  C:04F6H         LINE#         91
+  C:0501H         LINE#         92
+  C:051AH         LINE#         93
+  C:051DH         LINE#         94
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        PID
+
+  -------         MODULE        ?C?FPADD
+  C:000AH         PUBLIC        ?C?FPADD
+  C:0006H         PUBLIC        ?C?FPSUB
+  -------         ENDMOD        ?C?FPADD
+
+  -------         MODULE        ?C?FPMUL
+  C:00FBH         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?LLDPTR
+  C:024BH         PUBLIC        ?C?LLDPTR
+  -------         ENDMOD        ?C?LLDPTR
+
+  -------         MODULE        ?C?LLDOPTR
+  C:026BH         PUBLIC        ?C?LLDOPTR
+  -------         ENDMOD        ?C?LLDOPTR
+
+  -------         MODULE        ?C?LSTPTR
+  C:029BH         PUBLIC        ?C?LSTPTR
+  -------         ENDMOD        ?C?LSTPTR
+
+  -------         MODULE        ?C?LSTOPTR
+  C:02B5H         PUBLIC        ?C?LSTOPTR
+  -------         ENDMOD        ?C?LSTOPTR
+
+  -------         MODULE        ?C?LLDOPTR0
+  C:02D9H         PUBLIC        ?C?LLDOPTR0
+  -------         ENDMOD        ?C?LLDOPTR0
+
+BL51 BANKED LINKER/LOCATER V5.12                                                      01/15/2007  11:42:55  PAGE 4
+
+
+  -------         MODULE        ?C?MEMSET
+  C:0309H         PUBLIC        ?C?MEMSET
+  -------         ENDMOD        ?C?MEMSET
+
+  -------         MODULE        ?C?LLDIDATA
+  C:0335H         PUBLIC        ?C?LLDIDATA
+  -------         ENDMOD        ?C?LLDIDATA
+
+  -------         MODULE        ?C?LLDXDATA
+  C:0341H         PUBLIC        ?C?LLDXDATA
+  -------         ENDMOD        ?C?LLDXDATA
+
+  -------         MODULE        ?C?LLDPDATA
+  C:034DH         PUBLIC        ?C?LLDPDATA
+  -------         ENDMOD        ?C?LLDPDATA
+
+  -------         MODULE        ?C?LLDCODE
+  C:0359H         PUBLIC        ?C?LLDCODE
+  -------         ENDMOD        ?C?LLDCODE
+
+  -------         MODULE        ?C?LLDIDATA0
+  C:0369H         PUBLIC        ?C?LLDIDATA0
+  -------         ENDMOD        ?C?LLDIDATA0
+
+  -------         MODULE        ?C?LLDXDATA0
+  C:0376H         PUBLIC        ?C?LLDXDATA0
+  -------         ENDMOD        ?C?LLDXDATA0
+
+  -------         MODULE        ?C?LLDPDATA0
+  C:0382H         PUBLIC        ?C?LLDPDATA0
+  -------         ENDMOD        ?C?LLDPDATA0
+
+  -------         MODULE        ?C?LLDCODE0
+  C:038FH         PUBLIC        ?C?LLDCODE0
+  -------         ENDMOD        ?C?LLDCODE0
+
+  -------         MODULE        ?C?LSTIDATA
+  C:039FH         PUBLIC        ?C?LSTIDATA
+  -------         ENDMOD        ?C?LSTIDATA
+
+  -------         MODULE        ?C?LSTXDATA
+  C:03ABH         PUBLIC        ?C?LSTXDATA
+  -------         ENDMOD        ?C?LSTXDATA
+
+  -------         MODULE        ?C?LSTPDATA
+  C:03B7H         PUBLIC        ?C?LSTPDATA
+  -------         ENDMOD        ?C?LSTPDATA
+
+Program Size: data=60.0 xdata=0 code=1349
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
