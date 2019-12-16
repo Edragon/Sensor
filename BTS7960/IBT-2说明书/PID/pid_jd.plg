@@ -1,0 +1,39 @@
+<html>
+<body>
+<pre>
+<h1>µVision2 Build Log</h1>
+<h2>Project:</h2>
+D:\work\keil-c\pid\pid_jd.uv2
+Project File Date:  11/03/2006
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling pid_jd.c...
+PID_JD.C(75): warning C280: 'rDelta': unreferenced local variable
+linking...
+Program Size: data=29.0 xdata=0 code=537
+"pid_jd" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling pid_jd.c...
+PID_JD.C(75): warning C280: 'rDelta': unreferenced local variable
+linking...
+Program Size: data=29.0 xdata=0 code=537
+"pid_jd" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling pid_jd.c...
+PID_JD.C(75): warning C280: 'rDelta': unreferenced local variable
+linking...
+Program Size: data=29.0 xdata=0 code=537
+"pid_jd" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling pid_jd.c...
+PID_JD.C(75): warning C280: 'rDelta': unreferenced local variable
+linking...
+Program Size: data=29.0 xdata=0 code=541
+"pid_jd" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling pid_jd.c...
+PID_JD.C(75): warning C280: 'rDelta': unreferenced local variable
+linking...
+Program Size: data=29.0 xdata=0 code=537
+"pid_jd" - 0 Error(s), 1 Warning(s).

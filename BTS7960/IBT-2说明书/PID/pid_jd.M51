@@ -1,0 +1,177 @@
+BL51 BANKED LINKER/LOCATER V5.12                                                        08/01/2007  16:37:13  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V5.12, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE pid_jd.obj TO pid_jd
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  pid_jd.obj (PID_JD)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ILDPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ILDOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?IILDOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ISTOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?MEMSET)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?IILDX)
+
+
+LINK MAP OF MODULE:  pid_jd (PID_JD)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0014H     UNIT         _DATA_GROUP_
+            IDATA   001CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0131H     UNIT         ?C?LIB_CODE
+            CODE    0134H     0092H     UNIT         ?PR?_PIDCALC?PID_JD
+            CODE    01C6H     0034H     UNIT         ?PR?MAIN?PID_JD
+            CODE    01FAH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0206H     0009H     UNIT         ?PR?_PIDINIT?PID_JD
+            CODE    020FH     0005H     UNIT         ?PR?SENSOR?PID_JD
+            CODE    0214H     0005H     UNIT         ?PR?_ACTUATOR?PID_JD
+
+
+
+OVERLAY MAP OF MODULE:   pid_jd (PID_JD)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?PID_JD
+
+?PR?MAIN?PID_JD                0008H    0010H
+  +--> ?PR?_PIDINIT?PID_JD
+  +--> ?PR?SENSOR?PID_JD
+  +--> ?PR?_PIDCALC?PID_JD
+  +--> ?PR?_ACTUATOR?PID_JD
+
+?PR?_PIDCALC?PID_JD            0018H    0004H
+BL51 BANKED LINKER/LOCATER V5.12                                                      08/01/2007  16:37:13  PAGE 2
+
+
+
+?PR?_ACTUATOR?PID_JD           0018H    0002H
+
+
+
+SYMBOL TABLE OF MODULE:  pid_jd (PID_JD)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PID_JD
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:020FH         PUBLIC        sensor
+  C:01C6H         PUBLIC        main
+  C:0134H         PUBLIC        _PIDCalc
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0214H         PUBLIC        _actuator
+  C:0206H         PUBLIC        _PIDInit
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _PIDCALC
+  D:0001H         SYMBOL        pp
+  D:0004H         SYMBOL        NextPoint
+  -------         DO            
+  D:0018H         SYMBOL        dError
+  D:001AH         SYMBOL        Error
+  -------         ENDDO         
+  C:0134H         LINE#         41
+  C:0134H         LINE#         42
+  C:0134H         LINE#         46
+  C:0141H         LINE#         47
+  C:014AH         LINE#         48
+  C:0164H         LINE#         49
+  C:016DH         LINE#         50
+  C:0178H         LINE#         51
+  C:01C5H         LINE#         55
+  -------         ENDPROC       _PIDCALC
+  -------         PROC          _PIDINIT
+  D:0001H         SYMBOL        pp
+  C:0206H         LINE#         61
+  C:0206H         LINE#         62
+  C:0206H         LINE#         63
+  -------         ENDPROC       _PIDINIT
+  -------         PROC          SENSOR
+  C:020FH         LINE#         70
+  C:020FH         LINE#         71
+  C:020FH         LINE#         72
+  C:0213H         LINE#         73
+  -------         ENDPROC       SENSOR
+  -------         PROC          _ACTUATOR
+  D:0018H         SYMBOL        rDelta
+  C:0214H         LINE#         75
+BL51 BANKED LINKER/LOCATER V5.12                                                      08/01/2007  16:37:13  PAGE 3
+
+
+  C:0218H         LINE#         76
+  -------         ENDPROC       _ACTUATOR
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        sPID
+  D:0004H         SYMBOL        rOut
+  D:0016H         SYMBOL        rIn
+  -------         ENDDO         
+  C:01C6H         LINE#         78
+  C:01C6H         LINE#         79
+  C:01C6H         LINE#         84
+  C:01CFH         LINE#         85
+  C:01D4H         LINE#         86
+  C:01D8H         LINE#         87
+  C:01DCH         LINE#         88
+  C:01E1H         LINE#         90
+  C:01E1H         LINE#         92
+  C:01E8H         LINE#         93
+  C:01F5H         LINE#         94
+  C:01F8H         LINE#         95
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        PID_JD
+
+  -------         MODULE        ?C?IMUL
+  C:0003H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?ILDPTR
+  C:0015H         PUBLIC        ?C?ILDPTR
+  -------         ENDMOD        ?C?ILDPTR
+
+  -------         MODULE        ?C?ILDOPTR
+  C:0040H         PUBLIC        ?C?ILDOPTR
+  -------         ENDMOD        ?C?ILDOPTR
+
+  -------         MODULE        ?C?IILDOPTR
+  C:0078H         PUBLIC        ?C?IILDOPTR
+  -------         ENDMOD        ?C?IILDOPTR
+
+  -------         MODULE        ?C?ISTOPTR
+  C:00C5H         PUBLIC        ?C?ISTOPTR
+  -------         ENDMOD        ?C?ISTOPTR
+
+  -------         MODULE        ?C?MEMSET
+  C:00F2H         PUBLIC        ?C?MEMSET
+  -------         ENDMOD        ?C?MEMSET
+
+  -------         MODULE        ?C?IILDX
+  C:011EH         PUBLIC        ?C?IILDX
+  -------         ENDMOD        ?C?IILDX
+
+Program Size: data=29.0 xdata=0 code=537
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

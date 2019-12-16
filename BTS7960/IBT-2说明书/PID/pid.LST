@@ -1,0 +1,122 @@
+C51 COMPILER V7.50   PID                                                                   01/15/2007 11:42:55 PAGE 1   
+
+
+C51 COMPILER V7.50, COMPILATION OF MODULE PID
+OBJECT MODULE PLACED IN pid.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE pid.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*====================================================================================================
+   2              这是从网上找来的一个比较典型的PID处理程序，在使用单片机作为控制cpu时，请稍作简化，具体的PID
+   3          参数必须由具体对象通过实验确定。由于单片机的处理速度和ram资源的限制，一般不采用浮点数运算，
+   4          而将所有参数全部用整数，运算到最后再除以一个2的N次方数据（相当于移位），作类似定点数运算，可
+   5          大大提高运算速度，根据控制精度的不同要求，当精度要求很高时，注意保留移位引起的“余数”，做好余
+   6          数补偿。这个程序只是一般常用pid算法的基本架构，没有包含输入输出处理部分。
+   7          =====================================================================================================*/
+   8          #include <string.h>
+   9          #include <stdio.h>
+  10          #include <math.h>
+  11          /*====================================================================================================
+  12              PID Function
+  13              
+  14              The PID (比例、积分、微分) function is used in mainly
+  15              control applications. PIDCalc performs one iteration of the PID
+  16              algorithm.
+  17          
+  18              While the PID function works, main is just a dummy program showing
+  19              a typical usage.
+  20          =====================================================================================================*/
+  21          
+  22          typedef struct PID {
+  23          
+  24                  double  SetPoint;           //  设定目标 Desired Value
+  25          
+  26                  double  Proportion;         //  比例常数 Proportional Const
+  27                  double  Integral;           //  积分常数 Integral Const
+  28                  double  Derivative;         //  微分常数 Derivative Const
+  29          
+  30                  double  LastError;          //  Error[-1]
+  31                  double  PrevError;          //  Error[-2]
+  32                  double  SumError;           //  Sums of Errors
+  33          
+  34          } PID;
+  35          
+  36          /*====================================================================================================
+  37             PID计算部分
+  38          =====================================================================================================*/
+  39          
+  40          double PIDCalc( PID *pp, double NextPoint )
+  41          {
+  42   1          double  dError,
+  43   1                  Error;
+  44   1      
+  45   1              Error = pp->SetPoint -  NextPoint;          // 偏差
+  46   1              pp->SumError += Error;                      // 积分
+  47   1              dError = pp->LastError - pp->PrevError;     // 当前微分
+  48   1              pp->PrevError = pp->LastError;
+  49   1              pp->LastError = Error;
+  50   1              return (pp->Proportion * Error              // 比例项
+  51   1                  +   pp->Integral * pp->SumError         // 积分项
+  52   1                  +   pp->Derivative * dError             // 微分项
+  53   1              );
+  54   1      }
+  55          
+C51 COMPILER V7.50   PID                                                                   01/15/2007 11:42:55 PAGE 2   
+
+  56          /*====================================================================================================
+  57             Initialize PID Structure
+  58          =====================================================================================================*/
+  59          
+  60          void PIDInit (PID *pp)
+  61          {
+  62   1          memset ( pp,0,sizeof(PID));
+  63   1      }
+  64          
+  65          /*====================================================================================================
+  66              Main Program
+  67          =====================================================================================================*/
+  68          
+  69          double sensor (void)                    //  Dummy Sensor Function
+  70          {
+  71   1          return 100.0;
+  72   1      }
+  73          
+  74          void actuator(double rDelta)            //  Dummy Actuator Function
+  75          {}
+*** WARNING C280 IN LINE 74 OF PID.C: 'rDelta': unreferenced local variable
+  76          
+  77          void main(void)
+  78          {
+  79   1          PID         sPID;                   //  PID Control Structure
+  80   1          double      rOut;                   //  PID Response (Output)
+  81   1          double      rIn;                    //  PID Feedback (Input)
+  82   1      
+  83   1          PIDInit ( &sPID );                  //  Initialize Structure
+  84   1          sPID.Proportion = 1;              //  Set PID Coefficients
+  85   1          sPID.Integral   = 1;
+  86   1          sPID.Derivative = 0.0;
+  87   1          sPID.SetPoint   = 100.0;            //  Set PID Setpoint
+  88   1      
+  89   1          for (;;) {                          //  Mock Up of PID Processing
+  90   2      
+  91   2              rIn = sensor ();                //  Read Input
+  92   2              rOut = PIDCalc ( &sPID,99.0 );   //  Perform PID Interation
+  93   2              actuator ( rOut );              //  Effect Needed Changes
+  94   2          }
+  95   1      }
+  96          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    374    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      55
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
