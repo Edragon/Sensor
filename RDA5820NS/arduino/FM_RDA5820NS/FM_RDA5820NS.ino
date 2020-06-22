@@ -11,6 +11,8 @@ void loop() {
    Serial.print("FMtx=");
    Serial.print(Rda5820FreqGet());//FM频率
    Serial.println(" ");
+
+   
  }
  
 void initRda5820()//FM初始化

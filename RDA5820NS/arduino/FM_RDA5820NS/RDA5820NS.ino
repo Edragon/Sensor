@@ -20,8 +20,8 @@
 void RX_Fm()//FM接收模式
 {
    Rda5820RxMode();//接收模式
-   Rda5820VolSet(8);//设置音量0-15
-   Rda5820FreqSet(9160);//设置FM频率
+   Rda5820VolSet(15);//设置音量0-15
+   Rda5820FreqSet(10710);//设置FM频率
 }
 
 void TX_Fm()//FM发送模式
