@@ -1,0 +1,53 @@
+APLUS Inc aP89 DPM Setup File
+DEVICE : aP89341	CUSTOMER NO:12345678
+Include File : C:\Sample\aP89341\89341Demo.LOG
+Chksum : 15DBh C:\Sample\aP89341\89341Demo.DPM
+Source	Size	Rate	Start  	 End	  Len      TYPE  File name
+-----------------------------------------------------------------
+No:1    41587   12048   0x04000h 0x0E3FFh 0x0A400h PCM   tp1.voc
+No:2    12290   12048   0x0E400h 0x115FFh 0x03200h PCM   tp2.voc
+No:3    10235   12048   0x11600h 0x129FFh 0x01400h ADPCM tp3.voc
+No:4    15639   12048   0x12A00h 0x149FFh 0x02000h ADPCM tp4.voc
+No:5    15098   12048   0x14A00h 0x185FFh 0x03C00h PCM   tp5.voc
+No:6    17487   12048   0x18600h 0x1CBFFh 0x04600h PCM   tp6.voc
+No:7    13175   12048   0x1CC00h 0x1E5FFh 0x01A00h ADPCM tp7.voc
+No:8    125176  12048   0x1E600h 0x3CFFFh 0x1EA00h PCM   tp8.voc
+-----------------------------------------------------------------
+Denounce Timer 16ms. Ramp Type Cout[DAC]. Option Type LED1 BUSY STOP.
+-----------------------------------------------------------------
+Switch	       Option setting
+-----------------------------------------------------------------
+SW:1     Edge   UnHoldable Non-Retrigger Stop-Enabled
+=================================================================
+ No:1    Busy-Low  PCM   tp1.voc
+ No:2    Busy-High ADPCM tp3.voc
+-----------------------------------------------------------------
+SW:2     Edge   UnHoldable Non-Retrigger Stop-Enabled
+=================================================================
+ No:1    Busy-Low  PCM   tp2.voc
+-----------------------------------------------------------------
+SW:3     Edge   UnHoldable Non-Retrigger Stop-Enabled
+=================================================================
+ No:1    Busy-Low  ADPCM tp3.voc
+-----------------------------------------------------------------
+SW:4     Edge   UnHoldable Non-Retrigger Stop-Enabled
+=================================================================
+ No:1    Busy-Low  ADPCM tp4.voc
+-----------------------------------------------------------------
+SW:5     Edge   UnHoldable Non-Retrigger Stop-Enabled
+=================================================================
+ No:1    Busy-Low  PCM   tp5.voc
+-----------------------------------------------------------------
+SW:6     Edge   UnHoldable Non-Retrigger Stop-Enabled
+=================================================================
+ No:1    Busy-Low  PCM   tp6.voc
+-----------------------------------------------------------------
+SW:7     Edge   UnHoldable Non-Retrigger Stop-Enabled
+=================================================================
+ No:1    Busy-Low  ADPCM tp7.voc
+-----------------------------------------------------------------
+SW:8     Edge   UnHoldable Non-Retrigger Stop-Enabled
+=================================================================
+ No:1    Busy-Low  PCM   tp8.voc
+
+End of Log file-------------------------------------------------
