@@ -1,0 +1,42 @@
+Why you guys deleted the energy meter/HLW8032 folder?
+I really need those source files. 
+Kindly push those file back and mail at me at khaalidi@protonmail.com
+
+
+
+
+为什么你们删除了 "energy meter/HLW8032" 文件夹？
+我真的需要那些源文件。
+请将这些文件推回并通过khaalidi@protonmail.com邮寄给我
+
+
+energy meter/HLW8032参考设计资料V10/1-HLW8032手册/DS_HLW8032_CN_Rev1.3.pdf
+energy meter/HLW8032参考设计资料V10/2-设计文档/HLW8032-UART数据处理表.xlsx
+energy meter/HLW8032参考设计资料V10/2-设计文档/HLW8032参考应用一【免校准参考设计】.pdf
+energy meter/HLW8032参考设计资料V10/2-设计文档/HLW8032参考应用二【校准参考设计】.pdf
+energy meter/HLW8032参考设计资料V10/2-设计文档/HLW8032的PF和寄存器与输入负载的关系查询表.xlsx
+energy meter/HLW8032参考设计资料V10/3-参考设计图纸/HLW8032电路应用参考设计(隔离采样）.pdf
+energy meter/HLW8032参考设计资料V10/3-参考设计图纸/HLW8032电路应用参考设计(非隔离采样）.pdf
+energy meter/HLW8032参考设计资料V10/3-参考设计图纸/Protel文件/HLW8032电路应用参考设计(隔离采样).Sch
+energy meter/HLW8032参考设计资料V10/3-参考设计图纸/Protel文件/HLW8032电路应用参考设计(非隔离采样).Sch
+energy meter/HLW8032参考设计资料V10/3-参考设计图纸/Protel文件/HLW8032电路应用参考设计(非隔离采样).SchPreview
+energy meter/HLW8032参考设计资料V10/3-参考设计图纸/Protel文件/History/HLW8012电路应用参考设计(非隔离采样).~(1).Sch.Zip
+energy meter/HLW8032参考设计资料V10/3-参考设计图纸/Protel文件/History/PCB-HLW8012DEMO-V20.~(1).Pcb.Zip
+energy meter/HLW8032参考设计资料V10/3-参考设计图纸/Protel文件/PCB-HLW8012DEMO-V20.Pcb
+energy meter/HLW8032参考设计资料V10/3-参考设计图纸/Protel文件/PCB-HLW8012DEMO-V20.PcbPreview
+energy meter/HLW8032参考设计资料V10/4-Layout设计参考/Pcb Layout注意事项.pdf
+energy meter/HLW8032参考设计资料V10/4-Layout设计参考/【PCB Layout设计之1】电流信号线的走线方式.pdf
+energy meter/HLW8032参考设计资料V10/4-Layout设计参考/【PCB Layout设计之2】多路计量的地线处理方法.pdf
+energy meter/HLW8032参考设计资料V10/5-校准方法/电能计量产品校准（参考HLW8012）.ppsx
+energy meter/HLW8032参考设计资料V10/6-HLW8032外围电路器件资料/MP150/EV155-J-00A_r1.01.pdf
+energy meter/HLW8032参考设计资料V10/6-HLW8032外围电路器件资料/MP150/MP150.pdf
+energy meter/HLW8032参考设计资料V10/6-HLW8032外围电路器件资料/互感器资料/ZMCT103C E类2.doc
+energy meter/HLW8032参考设计资料V10/6-HLW8032外围电路器件资料/互感器资料/ZMPT107 规格书.doc
+energy meter/HLW8032参考设计资料V10/7-免校准WIFI插座方案/HM800X(esp8266) WIFI模块规格.pdf
+energy meter/HLW8032参考设计资料V10/7-免校准WIFI插座方案/免校准WIFi插座解决方案-合力为科技.pdf
+energy meter/HLW8032参考设计资料V10/8-FAQ资料/【PCB Layout设计之1】电流信号线的走线方式.pdf
+energy meter/HLW8032参考设计资料V10/8-FAQ资料/【硬件设计之1】隔离采样与非隔离采样的区别.pdf
+energy meter/HLW8032参考设计资料V10/8-FAQ资料/【硬件设计之2】HLW8012的参考地与N线的关系.pdf
+energy meter/HLW8032参考设计资料V10/8-FAQ资料/【硬件设计之3】采样电阻有哪几种类型.pdf
+energy meter/HLW8032参考设计资料V10/HLW8032开发设计流程.pdf
+energy meter/demo_code
